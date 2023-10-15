@@ -86,6 +86,8 @@ class OrderCreateView(TitleMixin, CreateView):
         return super(OrderCreateView, self).form_valid(form)
 
 
+
+
 @csrf_exempt
 def stripe_webhook_view(request):
   payload = request.body
@@ -106,20 +108,20 @@ def stripe_webhook_view(request):
   # Handle the checkout.session.completed event
   if event['type'] == 'checkout.session.completed':
     # Retrieve the session. If you require line items in the response, you may include them by expanding line_items.
-    session = stripe.checkout.Session.retrieve(
-      event['data']['object']['id'],
-      expand=['line_items'],
-    )
+    # session = stripe.checkout.Session.retrieve(
+      session =  event['data']['object'],
+      # expand=['line_items'],
+    # )
 
-    line_items = session.line_items
-    print(line_items)
+    # line_items = session.line_items
     # Fulfill the purchase...
-    fulfill_order(line_items)
+      fulfill_order(session)
 
   # Passed signature verification
   return HttpResponse(status=200)
 
-def fulfill_order(line_items):
-  order_id = int(Session.metadata_id)
+
+def fulfill_order(session):
+  order_id = int(session.metadata.order_id)
   order = Order.objects.get(id=order_id)
   order.update_after_payment()

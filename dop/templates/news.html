@@ -1,0 +1,107 @@
+{% extends 'layout/base.html' %}
+<title>Document</title>
+
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Новостной сайт</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+        h1 {
+            margin: 0;
+        }
+        nav {
+            background-color: #444;
+            padding: 10px;
+        }
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        nav li {
+            display: inline;
+            margin: 0 10px;
+        }
+        .video-container {
+            max-width: 800px;
+            margin: 20px auto;
+        }
+        .video {
+            width: 100%;
+            height: 400px;
+        }
+        .news-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            padding: 20px;
+        }
+        .news-card {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin: 10px;
+            width: calc(33.33% - 20px);
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Новостной сайт</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="#">Главная</a></li>
+            <li><a href="#">Видео</a></li>
+            <li><a href="#">Политика</a></li>
+            <li><a href="#">Наука</a></li>
+            <li><a href="#">Спорт</a></li>
+        </ul>
+    </nav>
+    <div class="video-container">
+        <iframe class="video" src="https://www.youtube.com/embed/TDjh2Do0kj0?si=wpdg6L3_6YZjdWjR" frameborder="0" allowfullscreen></iframe>
+    </div>
+    <div class="news-container">
+        <div class="news-card">
+            <h2>Заголовок новости</h2>
+            <p>Описание новости</p>
+            <a href="#">Читать далее</a>
+        </div>
+        <div class="news-card">
+            <h2>Заголовок новости</h2>
+            <p>Описание новости</p>
+            <a href="#">Читать далее</a>
+        </div>
+        <div class="news-card">
+            <h2>Заголовок новости</h2>
+            <p>Описание новости</p>
+            <a href="#">Читать далее</a>
+        </div>
+        <!-- Добавьте больше новостных карточек по мере необходимости -->
+    </div>
+</body>
+</html>
+
+
+{% include 'layout/footer.html' %}
+
+
+{% endblock %}

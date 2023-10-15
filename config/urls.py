@@ -26,6 +26,7 @@ urlpatterns = [
     path('', include('products.urls'), name='products'),
     path('users/', include('users.urls'), name='users'),
     path('orders/', include('orders.urls'), name='orders'),
+    path('dop/', include('dop.urls'), name='dop'),
     path('accounts/', include('allauth.urls')),
     path('webhook/stripe/', stripe_webhook_view, name='stripe_webhook'),
 

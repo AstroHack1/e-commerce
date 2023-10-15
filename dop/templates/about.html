@@ -1,0 +1,49 @@
+{% extends 'layout/base.html' %}
+<title>Document</title>
+
+{% block content %}
+
+
+    <div class="container">
+        <div class="s">
+        <h2>О нашей компании</h2>
+        <p>Мы - новостная компания, предоставляющая свежие новости нашим читателям. Наша цель - информировать вас о самых важных событиях в мире, обеспечивая актуальные и интересные новости.</p>
+
+        <h2>Наша команда</h2>
+        <p>У нас работает профессиональная команда журналистов, редакторов и технических специалистов, готовых предоставить вам лучшие новости и статьи на разнообразные темы.</p>
+
+        <h2>Как с нами связаться</h2>
+        <p>Если у вас есть вопросы или комментарии, вы можете связаться с нами по адресу электронной почты: <a href="mailto:liderliga12@gmail.com">liderliga12@gmail.com</a>.</p>
+    </div>
+</div>
+
+  <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+        h1 {
+            margin: 0;
+        }
+        .container {
+            margin: 20px auto;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .s {
+            margin-top: 10%;
+        }
+    </style>
+
+{% include 'layout/footer.html' %}
+
+
+{% endblock %}

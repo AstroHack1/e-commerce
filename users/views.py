@@ -56,5 +56,5 @@ class EmailVerificationView(TitleMixin, TemplateView):
             return super().get(request, *args, **kwargs)
         else:
             return HttpResponseRedirect(reverse('products:index'))
-        
+
         

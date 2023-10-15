@@ -1,10 +1,8 @@
-import uuid
-from datetime import timedelta
 
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm, UserChangeForm
-from users.models import User, EmailVerification
+from users.models import User 
 from django import forms
-from django.utils.timezone import now
+from users.tasks import send_email_verification
 
 
 # класс отображения  логирования
@@ -46,10 +44,15 @@ class UserRegistrationForm(UserCreationForm):
 
     def save(self, commit=True):
         user = super(UserRegistrationForm, self).save(commit=True)
-        expiration = now() + timedelta(hours=48)
-        record = EmailVerification.objects.create(code=uuid.uuid4(), user=user, expiration=expiration)
-        record.send_verification_email()
+        send_email_verification.delay(user.id)
         return user
+    
+            
+    def clean_email(self):
+        data = self.cleaned_data['email']
+        if User.objects.filter(email=data).exists():
+            raise forms.ValidationError('Email already in use.')
+        return data    
 
 
 # отображения данных в профиле (личный кабинет)

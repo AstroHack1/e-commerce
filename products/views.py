@@ -12,6 +12,8 @@ class IndexView(TitleMixin, TemplateView):
     template_name = 'index.html'
     title = 'Store'
 
+def Product_add(request):
+    return render(request=request, template_name='blog.html')
 
 class ProductsListView(TitleMixin, ListView):
     model = Product
